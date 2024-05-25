@@ -1,0 +1,157 @@
+Valuable take a ways:
+
+- Conway's law: "Any organization that designs a system...will inevitably produce a design whose structure is a copy of the organization's communication structure."
+    - The basic idea is that the architecture of your software and the communication structure of your organization have to match.
+    --> siloed organizations represent a control issue, and those silos control the architecture of the resulting computer system --> Ending with N-Tier System
+
+- The architecture of the system reflects the way people communicate, which is in turn a reflection of the organizational structure.
+
+Issues related to silos:
+- efficiency, since talking between silos is very inefficiency;
+-
+
+- One solution to this problem is agile software development
+
+- looking for what users do in the business domain
+
+- with agile methodology we pick a vertical slice, a very narrow piece of the work, that result in something useful for the end user and then build everything we need to deploy that.
+    --> story: A description of the user's work - a story touches every piece of the system. --> a story should be a description of the user's work and not a description of a "computer program".
+
+- when agile teams implement stories they may have to touch every piece of the system.
+
+- the only way to implement agile methodology accordingly to conway's law is to change the structure of organization to match agile methods. Instead of horizontal silos, each concerned with
+a single part of the system, you have to build complete stories with what are called cross-functional teams, teams that have all of the skills that you need to build a complete vertical slice
+of the system. We need to change the structure of the organization to match the new way of thinking about the problem.
+
+- microservices are small self-contained units that more closely match the structure of an agile team
+
+- moving to an agile-friendly architecture lets the team work much faster
+
+- most important points:
+
+- the architecture is in a sense a model of the organization whose problem's you're solving. that is architecture maps to the domain of the problem you're solving.
+- one of the biggest mistakes companies make when they adopt the agile is that they don't change their code to match an agile way of working.
+    This architecture mismatch ends up slowing down the teams so much they're hardly agile in any meaningful sense. Since they are too much time fighting code that's organized to be worked on
+    in a very different way. So to move to agile is mandatory to restructure the fundamental architecture of your system.
+
+win win
+
+- incremental versus big up-front design (BUFD) --> the requirements change while the work is in progress! --> building the wrong thing on time and in budget benefits nobody.
+-
+
+waterfall world of big upfront designs we build from bottom up, database layer, business logic that uses the data and last the user interface. Technological decision very early can be a mistake.
+Lego block design process driven by the implementation technology.
+
+agile incremental designs -->> flip from waterfall (BUFD):
+                                        - story reigns supreme
+                                        - we don't start with technology
+                                        - we start with work that your customers have to do
+                                        - As we build the code that does that work we defer technology decisions
+                                        - Very important: "The technological decision is deferred into what's called the last responsible moment", where it would be serious problems if we didn't make the decision
+                                        - The approach is driven by the needs of the user not by the technology --> Domain-Driven Design (DDD) -->
+                                        "The structure of your code should map to the structure of the problem domain." -->
+                                        "Bounded Context: The idea of bounded context is that it models natural division within the business whose problem we're solving, the domain." -->
+                                        Another final domain-driven design concept: "Ubiquitous Language in DDD: Speak the language of your customers. The same word can mean
+                                        different things under different contexts. This is OK."
+                                        - Platform choice (AWS, Azure or GCP) is a huge one, we should explore open-source and free-software solutions and avoid being forced into a specific
+                                        ecosystem.
+
+What is domain-driven design (DDD), and how does it compare to an N-tiered system?
+DDD focuses on creating software systems that match the problem domain. The system is modularized, making it easier to build and modify.
+
+How does agile software development differ from siloed software development, and what advantage does this provide?
+You work on thin, vertical slices compared to completely isolated and segmented parts, reducing development delays.
+
+Design process in three main phases (these phases happen in parallel):
+1. defining the problem --> problem statement:
+                                1. Describes the end user's problem;
+                                2. Describes the solution to the problem, however it does that in terms of the problem domain;
+
+                                You are to begin the development of an architecture for an accounting system. How should you approach writing the problem statement for this project?
+                                Describe the end user’s problem and the solution to this problem in the same way an accountant would.
+
+2. developing the user stories --> A user story describes their work (user work and not ours). Describes an end user going through a domain-level process to achieve some valuable outcome.
+                                   A user story does not describe a computer program.
+                                   Stories should be very small, only focused on a tiny bit of work, they should fit in a sticky note!
+                                   The smaller we can make the story, the better;
+3. defining the structure
+
+                            How are entities related to domain-driven design (DDD)?
+                            Entities are the bounded context in agents, where an agent does contextual work linked to a respective event and action.
+
+Enterprise Architecture, accordingly to MIT Center for Information Systems Research
+"The organizing logic for business processes and IT infrastructure reflecting the integration and standardization requirements of the company's operating model."
+
+- Describes the structure of the business
+- Describes how things get done (processes):
+    - How things work within departments,
+    - How people communicate
+
+How does an enterprise-level agile system compare to enterprise architecture (EA)?
+An enterprise-level agile system is comprised of small, cooperating but stand-alone parts, whereas EA is one large system.
+
+Microkernel Architecture: >> step up compared to monoliths
+- Strengths:
+    - Isolation prevents big ball-of-mud dependencies;
+    - Plugins are small and easy to write, debug, and maintain.
+- Challenges:
+    - APIs to the kernel are delicate
+    - New APIs may require rewriting plugins
+    - Problems within a kernel can bring the system down
+    - Plugins are indirectly coupled through the kernel
+
+Your team is tasked with creating an application for a retail chain to handle online ordering. You decide to use a microkernel architecture. What is the absolute minimum your kernel should contain?
+inventory and order processing
+
+Message-based architecture:
+    - Ease problems associated with network communication
+    - Forge into a single system things that aren't designed to work together
+- Strengths:
+    - More maintainable than monolith
+    - Solve dependency problems in microkernel systems
+- Challenges:
+    - Managing a highly complex system
+    - Can be very slow and time consuming
+    - Messages have to be stored on disks, replicated, backed up, and so on
+
+In a message-based architecture, why is it preferable to use an intermediary or a broker in order for systems to communicate with each other?
+It helps maintain system independence.
+
+Microservices and mini services:
+    Requirements:
+        - Small (few hundred lines of source code as rule of thumb and not a law)
+        - Independent service deployability (most important characteristic of all)
+        - Fully autonomous, they can't rely on other services to work together. They all have their own database, for example, rather than sharing a database with other services.
+        - To get this independence the service has to be written in a way that hides all the implementation details.
+        - Microservices systems are almost always distributed. So the service also has to be designed to work in an unreliable network environment.
+        - Highly observable, they log everything they do. When the service fails we need to know why.
+        - microservices are modeled around business concepts. Individual microservices implement bounded contexts.
+
+    Strengths:
+        - Independent services
+        - Changes do not affect the rest of the system
+        - Changes can occur quickly
+
+    Challenges:
+        - When we implement microservices the main problems usually have to do with how the services communicate to each other:
+            2 main approaches:
+                - each service with a small http-based web service that allow to talk to using REST protocol for HTTP POST, the main downside of a post-based API it's inherently synchronous,
+                rather heavy weight, and has several error modes that are difficult to solve
+                - the second approach and solution for main downsides of post-base API is to use messaging instead of http.
+        - Design and runtime complexity
+        - Networks are slow compared to alternatives
+
+Reactive and choreographed systems:
+    Synchronous Services -> a synchronous declarative system is also an inefficient one -> the solution its so called reactive or choreographed system,
+    in reactive systems, the shopping-cart service doesn't know any of the details of the downstream processing
+
+   Strengths compared to declarative one:
+    - Decoupling leads to easier maintenance
+    - Add additional down-stream clients as needed
+    - Faster than declarative
+
+Why can a reactive system be so much faster than a synchronous declarative system?
+Everything can be done in parallel, reducing the impact of bottlenecks.
+
+Your team is tasked with developing a reactive service that handles shopping cart, billing, warehouse, and email services. How will the shopping cart service communicate with the other services?
+It will broadcast out to the entire system that something needs to be done.
